@@ -1,10 +1,10 @@
 #include <iostream>
 
-
-int main()
-{
-    int* p;
-    *p = 0;
-    std::cout << "Hello World";
-    return 0;
+int main() {
+  if (true)
+    std::cout << true;
+  int *p;
+  *p = 0;
+  std::cout << "Hello World";
+  return 0;
 }
