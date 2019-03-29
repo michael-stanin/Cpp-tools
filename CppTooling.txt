@@ -1,0 +1,16 @@
+1. Install Visual Studio code
+2. Install Git
+3. VS Code Setup for C++ : https://code.visualstudio.com/docs/languages/cpp
+	Install Extension - C/C++
+	Install Extension - ClangComplete
+	Configure IntelliSense
+		By running the C/Cpp: Edit configurations command from the Command Palette (Ctrl+Shift+P) you can add c_cpp_properties.json
+	Building your code
+	Debugging your code
+	Editing Code
+	Auto-Complete
+	Navigating Code
+4. Download and install LLVM : http://releases.llvm.org/download.html and add it to path
+5. Download and install cppcheck : http://cppcheck.sourceforge.net/ and add it to path
+6. Download and install MinGW64 : https://sourceforge.net/projects/mingw-w64/ and add it to path
+7. Download and install Windows 10 SDK : https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk
