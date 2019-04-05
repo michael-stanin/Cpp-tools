@@ -110,17 +110,34 @@ using namespace std;
 //     }
 // }
 
-namespace UndefinedBehavior
+// namespace UndefinedBehavior
+// {
+//     // https://en.cppreference.com/w/cpp/language/ub
+
+//     void test()
+//     {
+//         bool p; // uninitialized local variable
+//         if (p) // UB access to uninitialized scalar
+//             cout << "p is true";
+//         if (!p) // UB access to uninitialized scalar
+//             cout << "p is false";
+//     }
+// }
+
+namespace DoubleFree
 {
-    // https://en.cppreference.com/w/cpp/language/ub
-    
     void test()
     {
-        bool p; // uninitialized local variable
-        if (p) // UB access to uninitialized scalar
-            cout << "p is true";
-        if (!p) // UB access to uninitialized scalar
-            cout << "p is false";
+        int *a = new int;
+        delete a;
+        delete a;
+
+        int *b = new int[10];
+        b++;
+        delete b;
+
+        int i = *a;
+        cout << i << endl;
     }
 }
 
@@ -132,5 +149,7 @@ int main()
     //MemoryLeaks::test();
     //DeadCode::test();
     //OutOfBoundsReadsWrites::test();
+    //UndefinedBehavior::test();
+    DoubleFree::test();
     return 0;
 }
