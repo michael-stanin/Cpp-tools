@@ -31,15 +31,31 @@ using namespace std;
 //     }
 // }
 
-namespace NullPointerDereference
+// namespace NullPointerDereference
+// {
+//     void test()
+//     {
+//         int* pi;
+//         cout << *pi << endl;
+
+//         int* otherPi = nullptr;
+//         cout << *otherPi << endl;
+//     }
+// }
+
+namespace MemoryLeaks
 {
+    struct A{
+        char* member;
+        A() :member(new char[42]){}
+    };
+
     void test()
     {
-        int* pi;
-        cout << *pi << endl;
-
-        int* otherPi = nullptr;
-        cout << *otherPi << endl;
+        A a;
+        int* pi = new int;
+        //*pi = 5;
+        return;
     }
 }
 
@@ -47,6 +63,7 @@ int main()
 {
     //std::cout << "Hello World";
     //DivisionByZero::test();
-
+    //NullPointerDereference::test();
+    MemoryLeaks::test();
     return 0;
 }
