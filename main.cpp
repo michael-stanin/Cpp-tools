@@ -1,4 +1,5 @@
 #include <iostream>
+#include <list>
 #include <vector>
 
 using namespace std;
@@ -60,35 +61,52 @@ using namespace std;
 //     }
 // }
 
-namespace DeadCode
+// namespace DeadCode
+// {
+//     int func(int a)
+//     {
+//         int b = a*2;
+//         return b;
+
+//         // Unreachable code
+//         if (b < 10) {
+//             b += 10;
+//         }
+//         return b;
+//     }
+
+//     void test()
+//     {
+//         func(42);
+
+//         vector<string> vec;
+//         while (true) {
+//             vec.push_back("abc");
+
+//             if (vec.size() > 25) {
+//                 return;
+//             }
+//         }
+
+//         // Unreachable code
+//         vec.pop_back();
+//     }
+// }
+
+namespace OutOfBoundsReadsWrites
 {
-    int func(int a)
-    {
-        int b = a*2;
-        return b;
-
-        // Unreachable code
-        if (b < 10) {
-            b += 10;
-        }
-        return b;
-    }
-
     void test()
     {
-        func(42);
+        int arr[] = {1,2,3,4,5}; 
+        cout << "arr [0] is " << arr[0] << endl; 
+      
+        // arr[10] is out of bound 
+        cout << "arr [10] is " << arr[10] << endl; 
 
-        vector<string> vec;
-        while (true) {
-            vec.push_back("abc");
-
-            if (vec.size() > 25) {
-                return;
-            }
-        }
-
-        // Unreachable code
-        vec.pop_back();
+        // allocation memory to out of bound  
+        // element 
+        arr[10] = 11; 
+        cout << "arr[10] is " << arr[10] << endl; 
     }
 }
 
@@ -98,6 +116,7 @@ int main()
     //DivisionByZero::test();
     //NullPointerDereference::test();
     //MemoryLeaks::test();
-    DeadCode::test();
+    //DeadCode::test();
+    OutOfBoundsReadsWrites::test();
     return 0;
 }
