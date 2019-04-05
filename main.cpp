@@ -93,20 +93,34 @@ using namespace std;
 //     }
 // }
 
-namespace OutOfBoundsReadsWrites
+// namespace OutOfBoundsReadsWrites
+// {
+//     void test()
+//     {
+//         int arr[] = {1,2,3,4,5}; 
+//         cout << "arr [0] is " << arr[0] << endl; 
+      
+//         // arr[10] is out of bound 
+//         cout << "arr [10] is " << arr[10] << endl; 
+
+//         // allocation memory to out of bound  
+//         // element 
+//         arr[10] = 11; 
+//         cout << "arr[10] is " << arr[10] << endl; 
+//     }
+// }
+
+namespace UndefinedBehavior
 {
+    // https://en.cppreference.com/w/cpp/language/ub
+    
     void test()
     {
-        int arr[] = {1,2,3,4,5}; 
-        cout << "arr [0] is " << arr[0] << endl; 
-      
-        // arr[10] is out of bound 
-        cout << "arr [10] is " << arr[10] << endl; 
-
-        // allocation memory to out of bound  
-        // element 
-        arr[10] = 11; 
-        cout << "arr[10] is " << arr[10] << endl; 
+        bool p; // uninitialized local variable
+        if (p) // UB access to uninitialized scalar
+            cout << "p is true";
+        if (!p) // UB access to uninitialized scalar
+            cout << "p is false";
     }
 }
 
@@ -117,6 +131,6 @@ int main()
     //NullPointerDereference::test();
     //MemoryLeaks::test();
     //DeadCode::test();
-    OutOfBoundsReadsWrites::test();
+    //OutOfBoundsReadsWrites::test();
     return 0;
 }
