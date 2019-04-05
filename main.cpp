@@ -124,22 +124,22 @@ using namespace std;
 //     }
 // }
 
-namespace DoubleFree
-{
-    void test()
-    {
-        int *a = new int;
-        delete a;
-        delete a;
+// namespace DoubleFree
+// {
+//     void test()
+//     {
+//         int *a = new int;
+//         delete a;
+//         delete a;
 
-        int *b = new int[10];
-        b++;
-        delete b;
+//         int *b = new int[10];
+//         b++;
+//         delete b;
 
-        int i = *a;
-        cout << i << endl;
-    }
-}
+//         int i = *a;
+//         cout << i << endl;
+//     }
+// }
 
 int main()
 {
@@ -150,6 +150,6 @@ int main()
     //DeadCode::test();
     //OutOfBoundsReadsWrites::test();
     //UndefinedBehavior::test();
-    DoubleFree::test();
+    //DoubleFree::test();
     return 0;
 }
