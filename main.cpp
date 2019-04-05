@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -43,19 +44,51 @@ using namespace std;
 //     }
 // }
 
-namespace MemoryLeaks
+// namespace MemoryLeaks
+// {
+//     struct A{
+//         char* member;
+//         A() :member(new char[42]){}
+//     };
+
+//     void test()
+//     {
+//         A a;
+//         int* pi = new int;
+//         //*pi = 5;
+//         return;
+//     }
+// }
+
+namespace DeadCode
 {
-    struct A{
-        char* member;
-        A() :member(new char[42]){}
-    };
+    int func(int a)
+    {
+        int b = a*2;
+        return b;
+
+        // Unreachable code
+        if (b < 10) {
+            b += 10;
+        }
+        return b;
+    }
 
     void test()
     {
-        A a;
-        int* pi = new int;
-        //*pi = 5;
-        return;
+        func(42);
+
+        vector<string> vec;
+        while (true) {
+            vec.push_back("abc");
+
+            if (vec.size() > 25) {
+                return;
+            }
+        }
+
+        // Unreachable code
+        vec.pop_back();
     }
 }
 
@@ -64,6 +97,7 @@ int main()
     //std::cout << "Hello World";
     //DivisionByZero::test();
     //NullPointerDereference::test();
-    MemoryLeaks::test();
+    //MemoryLeaks::test();
+    DeadCode::test();
     return 0;
 }
